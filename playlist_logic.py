@@ -168,7 +168,7 @@ def search_songs(
 
     for song in songs:
         value = str(song.get(field, "")).lower()
-        if value and q in value:
+        if value and value in q:
             filtered.append(song)
 
     return filtered
@@ -191,6 +191,9 @@ def lucky_pick(
 
 def random_choice_or_none(songs: List[Song]) -> Optional[Song]:
     """Return a random song or None."""
+    if not songs:
+        return None
+
     import random
 
     return random.choice(songs)
